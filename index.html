@@ -1,27 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AR Viewer</title>
-
-  <script type="module"
-    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AR Launch</title>
 </head>
 
-<body style="margin:0;">
+<body>
 
-<model-viewer
-  src="./models/ARテスト用_2.glb"
-  ios-src="./models/260529_fbx_test_2.usdz"
-  ar
-  ar-modes="webxr scene-viewer quick-look"
-  camera-controls
-  auto-rotate
-  autoplay
-  style="width:100vw; height:100vh;">
-</model-viewer>
+<a id="ar-link" rel="ar" href="./models/test.usdz">
+  <img src="https://dummyimage.com/300x300/000/fff&text=AR" width="300">
+</a>
+
+<script>
+window.onload = function() {
+  document.getElementById("ar-link").click();
+}
+</script>
 
 </body>
 </html>
