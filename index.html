@@ -2,19 +2,51 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.5">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AR Launch</title>
 </head>
 
 <body>
 
-<a id="ar-link" rel="ar" href="./models/260529_fbx_test_2.usdz">
-  <img src="https://dummyimage.com/300x300/000/fff&text=AR" width="300">
+<!-- iPhone用 -->
+<a id="ios-ar-link" rel="ar" href="./models/260529_fbx_test_2.usdz">
+  <img src="https://dummyimage.com/300x300/000/fff&text=AR" width="300" alt="AR">
 </a>
 
 <script>
 window.onload = function() {
-  document.getElementById("ar-link").click();
+
+  const ua = navigator.userAgent.toLowerCase();
+
+  const isIOS = /iphone|ipad|ipod/.test(ua);
+  const isAndroid = /android/.test(ua);
+
+  if (isIOS) {
+
+    // iPhone → Quick Look
+    document.getElementById("ios-ar-link").click();
+
+  } else if (isAndroid) {
+
+    // Android → Scene Viewer
+
+    const glbUrl =
+      "https://skymchhr.github.io/ar-test-0508/models/260609_fbx_test_2.glb";
+
+    const sceneViewerUrl =
+      "intent://arvr.google.com/scene-viewer/1.0?file=" +
+      encodeURIComponent(glbUrl) +
+      "&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;end;";
+
+    window.location.href = sceneViewerUrl;
+
+  } else {
+
+    document.body.innerHTML =
+      "<p>スマートフォンで開いてください。</p>";
+
+  }
+
 }
 </script>
 
