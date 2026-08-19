@@ -8,7 +8,7 @@
 
 <body>
 
-<!-- iPhone用 -->
+<!-- iPhone用：変更なし -->
 <a id="ios-ar-link" rel="ar" href="./models/nekolion_0819_colorOK.usdz">
   <img src="https://dummyimage.com/300x300/000/fff&text=AR" width="300" alt="AR">
 </a>
@@ -28,15 +28,21 @@ window.onload = function() {
 
   } else if (isAndroid) {
 
-    // Android → Scene Viewer
-
+    // Android → Google Scene Viewer
     const glbUrl =
       "https://skymchhr.github.io/ar-test-0508/models/ARnekolion_fix_0819re.glb";
 
     const sceneViewerUrl =
-      "intent://arvr.google.com/scene-viewer/1.0?file=" +
-      encodeURIComponent(glbUrl) +
-      "&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;end;";
+      "intent://arvr.google.com/scene-viewer/1.0?" +
+      "file=" + encodeURIComponent(glbUrl) +
+      "&mode=ar_only" +
+      "&resizable=false" +
+      "#Intent;" +
+      "scheme=https;" +
+      "package=com.google.android.googlequicksearchbox;" +
+      "action=android.intent.action.VIEW;" +
+      "S.browser_fallback_url=" + encodeURIComponent(glbUrl) + ";" +
+      "end;";
 
     window.location.href = sceneViewerUrl;
 
