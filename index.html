@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AR Launch</title>
+  <title>AR Test</title>
 
   <script
     type="module"
@@ -15,79 +15,41 @@
       margin: 0;
       width: 100%;
       height: 100%;
+      overflow: hidden;
     }
 
     model-viewer {
-      width: 100%;
-      height: 100%;
-      background: #ffffff;
-    }
-
-    #ios-ar-link {
-      display: none;
+      width: 100vw;
+      height: 100vh;
+      background: #ddd;
     }
   </style>
 </head>
 
 <body>
 
-<!-- iPhone用：変更なし -->
-<a id="ios-ar-link" rel="ar" href="./models/nekolion_0819_colorOK.usdz">
-  <img src="https://dummyimage.com/1x1/fff/fff" alt="AR">
-</a>
+  <model-viewer
+    src="https://skymchhr.github.io/ar-test-0508/models/ARnekolion_fix_0819_rere.glb"
+    ar
+    ar-modes="webxr scene-viewer"
+    ar-scale="fixed"
+    camera-controls
+    autoplay>
 
-<div id="android-container"></div>
+    <button
+      slot="ar-button"
+      style="
+        position:absolute;
+        left:50%;
+        bottom:40px;
+        transform:translateX(-50%);
+        padding:14px 24px;
+        font-size:16px;
+      ">
+      ARで見る
+    </button>
 
-<script>
-window.onload = function() {
-
-  const ua = navigator.userAgent.toLowerCase();
-
-  const isIOS = /iphone|ipad|ipod/.test(ua);
-  const isAndroid = /android/.test(ua);
-
-  if (isIOS) {
-
-    // iPhone → Quick Look
-    document.getElementById("ios-ar-link").click();
-
-  } else if (isAndroid) {
-
-    // Android → model-viewer / WebXR
-    document.getElementById("android-container").innerHTML = `
-      <model-viewer
-        src="https://skymchhr.github.io/ar-test-0508/models/ARnekolion_fix_0819_rere.glb"
-        ar
-        ar-modes="webxr scene-viewer"
-        ar-scale="fixed"
-        camera-controls
-        autoplay>
-
-        <button
-          slot="ar-button"
-          style="
-            position:absolute;
-            left:50%;
-            bottom:40px;
-            transform:translateX(-50%);
-            padding:14px 24px;
-            font-size:16px;
-          ">
-          ARで見る
-        </button>
-
-      </model-viewer>
-    `;
-
-  } else {
-
-    document.body.innerHTML =
-      "<p>スマートフォンで開いてください。</p>";
-
-  }
-
-}
-</script>
+  </model-viewer>
 
 </body>
 </html>
