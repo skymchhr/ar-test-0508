@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AR Test</title>
+  <title>Android AR Test</title>
 
   <script
     type="module"
@@ -21,7 +21,17 @@
     model-viewer {
       width: 100vw;
       height: 100vh;
-      background: #ddd;
+      background: #dddddd;
+    }
+
+    #ar-button {
+      position: absolute;
+      left: 50%;
+      bottom: 40px;
+      transform: translateX(-50%);
+      padding: 14px 24px;
+      font-size: 16px;
+      z-index: 10;
     }
   </style>
 </head>
@@ -31,21 +41,12 @@
   <model-viewer
     src="https://skymchhr.github.io/ar-test-0508/models/ARnekolion_fix_0819_rere.glb"
     ar
-    ar-modes="webxr scene-viewer"
+    ar-modes="scene-viewer webxr"
     ar-scale="fixed"
     camera-controls
     autoplay>
 
-    <button
-      slot="ar-button"
-      style="
-        position:absolute;
-        left:50%;
-        bottom:40px;
-        transform:translateX(-50%);
-        padding:14px 24px;
-        font-size:16px;
-      ">
+    <button id="ar-button" slot="ar-button">
       ARで見る
     </button>
 
